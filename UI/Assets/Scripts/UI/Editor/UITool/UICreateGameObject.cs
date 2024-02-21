@@ -171,13 +171,10 @@ public class UICreateGameObject
         _transform_button.gameObject.AddComponent<Image>();
         UIButton _button = _transform_button.gameObject.AddComponent<UIButton>();
 
-        Button[] _temp = _dialog.btnCloses;
-        _dialog.btnCloses = new Button[_temp.Length + 1];
-        for( int i=0; i<_temp.Length; ++i )
-        {
-            _dialog.btnCloses[i] = _temp[i];
-        }
-        _dialog.btnCloses[_dialog.btnCloses.Length - 1] = _button;
+        Button[] _temp = new Button[_dialog.btnCloses.Length+1];
+        System.Array.Copy(_dialog.btnCloses, _temp, _dialog.btnCloses.Length);
+        _temp[_temp.Length - 1] = _button;
+        _dialog.btnCloses = _temp;
         return _button;
     }
 

@@ -38,6 +38,16 @@ public class UIToolDraw_Info : UIToolDraw
     {
         base.Draw();
 
+        if (UIManager.Instance.dialog == null)
+        {
+            if (GUILayout.Button("Create UIManager", GUILayout.Width(150)))
+            {
+                m_tool.createGameObject.CreateUIManager(UIToolDraw_Toolbar.resolution_width, UIToolDraw_Toolbar.resolution_height);
+                EditorUtility.DisplayDialog("SUCCESS", "UIManager Complete", "OK");
+            }
+            return;
+        }
+
         m_scrollbar = GUILayout.BeginScrollView(m_scrollbar, new GUIStyle(GUI.skin.box), GUILayout.ExpandHeight(true), GUILayout.ExpandWidth(true));
 
         Draw_UIPathRecord(m_tool.select);
